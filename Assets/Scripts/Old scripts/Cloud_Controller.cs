@@ -13,6 +13,7 @@ public class Cloud_Controller : MonoBehaviour
     {
         StopRain();
     }
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
