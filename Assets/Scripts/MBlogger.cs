@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MBlogger : MonoBehaviour
+public class MBLogger : MonoBehaviour
 {
     private void Awake()
     {
-        Log("Avake");
+        Log($"Awake");
     }
 
     private void OnEnable()
     {
-        Log("OnEnable");
+        Log($"OnEnable");
     }
 
     private void Start()
     {
-        Log("Start");
+        Log($"Start");
     }
 
     public void FixedUpdate()
     {
 
     }
-    
+
     public void Update()
     {
 
@@ -31,20 +31,23 @@ public class MBlogger : MonoBehaviour
 
     public void LateUpdate()
     {
-
+        
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
-        Log("OnDisable");
+        Log($"OnDisable");
     }
 
     public void OnDestroy()
     {
-        Log("OnDestroy");
+        Log($"OnDestroy");
     }
-   private void Log(string msg)
-   {
-        Debug.Log($"{name} {msg} - frame{Time.frameCount}");
-   }
+
+
+
+    private void Log(string msg)
+    {
+        Debug.Log($"{name}.{msg} - frame: {Time.frameCount}");
+    }
 }
