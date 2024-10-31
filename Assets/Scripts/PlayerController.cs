@@ -7,24 +7,27 @@ namespace Golf
     {
         public Transform stick;
         public float maxAngle = 30f;
-
         public float speed = 1f;
+        public float returnspeed = 0.5f;
 
         private void Update()
         {
-            var angle = stick.localEulerAngles;
-            if (Input.GetMouseButton (0))
+            Vector3 angle = stick.localEulerAngles;
+            if (Input.GetMouseButton(0))
             {
-                angle.z += speed * Time.deltaTime;
-                angle.z = Mathf.Min (angle.z, maxAngle);
+                angle.z = Mathf.Min(angle.z + speed * Time.deltaTime, maxAngle);
             }
-            else 
+            else
             {
-                angle.z -= speed * Time.deltaTime;
-                angle.z = Mathf.Max (angle.z, -maxAngle);
+                angle.z = Mathf.Max(angle.z - returnspeed * Time.deltaTime, 360 - maxAngle);
             }
 
             stick.localEulerAngles = angle;
+
+
         }
+
     }
 }
+
+

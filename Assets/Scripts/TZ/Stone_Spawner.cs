@@ -6,7 +6,7 @@ public class Stone_Spawner : MonoBehaviour
 {
     [SerializeField]
     private Transform m_point;
-    
+
     [SerializeField]
     private GameObject[] m_Prefabs;
 
@@ -24,5 +24,5 @@ public class Stone_Spawner : MonoBehaviour
 
         Instantiate(m_Prefabs[index], m_point.position, m_point.rotation);
     }
-    
+
 }

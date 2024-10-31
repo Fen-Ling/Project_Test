@@ -17,36 +17,36 @@ namespace TZ
             if (ui.activeSelf)
             {
                 return;
-        }
-
-        if (freeCamera != null)
-        {
-            freeCamera.Move();
-        }
-
-        if (stoneSpawner != null)
-        {
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                stoneSpawner.Spawn();
             }
-        }
 
-        if (cloudController != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (freeCamera != null)
             {
-                cloudController.MoveNext();
+                freeCamera.Move();
             }
-        }
 
-        if (toolChangerController != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (stoneSpawner != null)
             {
-                toolChangerController.Change();
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    stoneSpawner.Spawn();
+                }
+            }
+
+            if (cloudController != null)
+            {
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    cloudController.MoveNext();
+                }
+            }
+
+            if (toolChangerController != null)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    toolChangerController.Change();
+                }
             }
         }
     }
-}
 }
