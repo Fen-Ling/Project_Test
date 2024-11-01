@@ -7,23 +7,33 @@ namespace Golf
     {
         public Transform stick;
         public float maxAngle = 30f;
-        public float speed = 1f;
-        public float returnspeed = 0.5f;
+        public float speed = 360f;
+       
 
-        private void Update()
+        private void Awake()
+        {
+            Application.targetFrameRate = 30;
+        }
+
+        private void FixedUpdate()
         {
             Vector3 angle = stick.localEulerAngles;
             if (Input.GetMouseButton(0))
             {
-                angle.z = Mathf.Min(angle.z + speed * Time.deltaTime, maxAngle);
+                Stick.Down();
             }
             else
             {
-                angle.z = Mathf.Max(angle.z - returnspeed * Time.deltaTime, 360 - maxAngle);
+                Stick.Up();        
             }
 
             stick.localEulerAngles = angle;
 
+
+        }
+
+        private void OnCollisionEnter (Collision collision)
+        {
 
         }
 
