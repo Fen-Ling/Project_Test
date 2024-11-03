@@ -1,16 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Golf
 {
-
-
     public class Stick : MonoBehaviour
     {
+        public float maxAngle = 30f;
+        public float speed = 360f;
+        public float power = 100f;
+        public Transform point;
+        public event System.Action onCollisionStone;
+        private Vector3 m_lastPointPosition;
+        private Vector3 m_dir;
         private bool m_isDown = false;
-
-        public void Down() 
+        private Rigidbody m_rigidbody;
+        private void Awake()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+        }
+        public void Down()
         {
             m_isDown = false;
         }
@@ -18,15 +27,32 @@ namespace Golf
         {
             m_isDown = true;
         }
-
-        
+        private void Update()
+        {
+            m_dir = (point.position - m_lastPointPosition).normalized;
+            m_lastPointPosition = point.position;            
+        }
+        private void FixedUpdate()
+        {
+            Vector3 angle = transform.localEulerAngles;
+            if (m_isDown)
+            {   
+                angle.z = Mathf.MoveTowardsAngle(angle.z, -maxAngle, speed * Time.deltaTime);
+            }
+            else
+            {
+                angle.z = Mathf.MoveTowardsAngle(angle.z, maxAngle, speed * Time.deltaTime);
+            }
+            transform.localEulerAngles = angle;
+        }
         private void OnCollisionEnter(Collision other)
         {
-            Debug.Log (other, this);
-            if (other.rigidbody)
+            if (other.gameObject.TryGetComponent<Stone>(out var stone) && !stone.isDirty)
             {
-               var contact = other.contacts[0];
-               
+                stone.isDirty = true;
+                var contact = other.contacts[0];
+                other.rigidbody.AddForce(m_dir * power, ForceMode.Impulse);
+                onCollisionStone?.Invoke();
             }
         }
     }
