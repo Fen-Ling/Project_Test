@@ -568,12 +568,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_point: {fileID: 50905885}
   m_Prefabs:
-  - {fileID: 1810794793195684, guid: 620a9990760343741aca88be3a5ef6f5, type: 3}
-  - {fileID: 1255513635061168, guid: 4e442caa9ee86b44a86b0f82a482d3c2, type: 3}
-  - {fileID: 1084492507345112, guid: 5e0add9f6411ccb4e92d0e11c1993b04, type: 3}
-  - {fileID: 1280616813399326, guid: ecab5d30172f91646ba03bf77da85562, type: 3}
-  - {fileID: 1068019299910886, guid: c50a4f5c47facef4db879da01499d866, type: 3}
-  - {fileID: 1852763391054922, guid: 3586e0bf1b62a9645bf55e9bc5322377, type: 3}
+  - {fileID: 7693557051737653340, guid: a51b3702a69e7a74e9ff1c1466588dcb, type: 3}
+  - {fileID: 4700922599306692769, guid: 2ad777a0d1116ab4a83c18e7dedefc77, type: 3}
+  - {fileID: 7895789954034612043, guid: 22f331351631d6644bfe17c1cbe2e452, type: 3}
+  - {fileID: 4928687353332039777, guid: bad6f8db4cc71b34fad6b49fd249bfcd, type: 3}
+  - {fileID: 17758550075940068, guid: f8b218b50f45317488ecf0e1499c726c, type: 3}
 --- !u!1 &53444462
 GameObject:
   m_ObjectHideFlags: 0
