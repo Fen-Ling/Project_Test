@@ -52,7 +52,8 @@ namespace Golf
                 stone.isDirty = true;
 
                 var contact = other.contacts[0];
-                other.rigidbody.AddForce(-contact.normal * power, ForceMode.Impulse);
+                // other.rigidbody.AddForce(-contact.normal * power, ForceMode.Impulse);
+                other.rigidbody.AddForce(m_dir * power, ForceMode.Impulse);
                 onCollisionStone?.Invoke();
             }
         }
