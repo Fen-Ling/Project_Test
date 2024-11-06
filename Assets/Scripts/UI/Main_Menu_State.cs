@@ -5,23 +5,26 @@ using UnityEngine;
 
 public class Main_Menu_State : MonoBehaviour
 {
+    public GameObject mainMenuUI;
     public Game_Play_State GamePlayState;
     public TextMeshProUGUI scoreText;
 
     private void OnEnable()
     {
-        
-        mainMenuUi.setActive(true);
-        scoreText.text = $"TOP SCORE: {Game_Instance.score}";
-
-
+        mainMenuUI.SetActive(true);
+        scoreText.text = $"MAX Очки: {Game_Instance.score}";
     }
-   
-   private void OnDisable()
-   {
-   mainMenuUi.setActive(false);
-   }
 
+    private void OnDisable()
+        {
+            mainMenuUI.SetActive(false);
+        }
+
+    public void Play()
+        {
+            gameObject.SetActive(false);
+            GamePlayState.gameObject.SetActive(true);
+        }
 
 
 }

@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Game_Over_State : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject GameOverUI;
+    public Main_Menu_State mainMenuState;
+    public Game_Play_State gamePlayState;
+
+    private void OnEnable()
     {
-        
+        GameOverUI.SetActive(true);
+    }
+    private void OnDisable()
+    {
+        if (GameOverUI)
+        {
+            GameOverUI.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
-        
+        gameObject.SetActive(false);
+        gamePlayState.gameObject.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        gameObject.SetActive(false);
+        mainMenuState.gameObject.SetActive(true);
     }
 }

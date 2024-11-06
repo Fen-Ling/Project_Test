@@ -2,32 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Golf;
+using TMPro;
 using UnityEngine;
 
 public class Game_Play_State : MonoBehaviour
 {
+    public Game_Over_State GameOverState;
     public PlayerController playerController;
     public LevelController levelController;
-    public GameObject rootUI;
+    public GameObject GamePlayUI;
+    public TextMeshProUGUI Score_Text;
     private void OnEnable()
     {
-        rootUI.SetActive(true);
+        GamePlayUI.SetActive(true);
         playerController.enabled = true;
         levelController.enabled = true;
-        levelController.
+        levelController.onGameOver += OnGameOver;
+        levelController.onScoreInc += OnScoreInc;
+
+        OnScoreInc(0);
 
     }
     private void OnDisable()
     {
-        
-    }
-    private void OnScoreInc()
-    {
+        if (GamePlayUI)
+        {
+            GamePlayUI.SetActive(false);
+        }
 
-    }
-    private void OnGameover()
-    {
+        if (playerController)
+        {
+            playerController.enabled = false;
+        }
 
+        if (levelController)
+        {
+            levelController.enabled = false;
+            levelController.onGameOver -= OnGameOver;
+            levelController.onScoreInc -= OnScoreInc;
+        }
+    }
+    private void OnScoreInc(int score)
+    {
+        Score_Text.text = $"Очки: {score}";
+    }
+    private void OnGameOver(int score)
+    {
+        Game_Instance.score = Mathf.Max(Game_Instance.score, score);
+
+        gameObject.SetActive(false);
+
+        GameOverState.gameObject.SetActive(true);
     }
 
 }
