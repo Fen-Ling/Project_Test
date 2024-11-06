@@ -32,11 +32,11 @@ namespace Golf
             Vector3 angle = transform.localEulerAngles;
             if (m_isDown)
             {
-                angle.z = Mathf.MoveTowardsAngle(angle.z, -maxAngle, speed * Time.deltaTime);
+                angle.z = Mathf.MoveTowardsAngle(angle.z, maxAngle, speed * Time.deltaTime);
             }
             else
             {
-                angle.z = Mathf.MoveTowardsAngle(angle.z, maxAngle, speed * Time.deltaTime);
+                angle.z = Mathf.MoveTowardsAngle(angle.z, -maxAngle, speed * Time.deltaTime);
             }
             transform.localEulerAngles = angle;
             m_dir = (point.position - m_lastPointPosition).normalized;
