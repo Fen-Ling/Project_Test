@@ -8,6 +8,7 @@ public class Main_Menu_State : MonoBehaviour
     public GameObject mainMenuUI;
     public Game_Play_State GamePlayState;
     public Settings_State SettingState;
+    public GameHistory_State gameHistoryState;
     public TextMeshProUGUI scoreText;
 
     private void OnEnable()
@@ -17,21 +18,25 @@ public class Main_Menu_State : MonoBehaviour
     }
 
     private void OnDisable()
-        {
-            mainMenuUI.SetActive(false);
-        }
+    {
+        mainMenuUI.SetActive(false);
+    }
 
     public void Play()
-        {
-            gameObject.SetActive(false);
-            GamePlayState.gameObject.SetActive(true);
-        }
+    {
+        gameObject.SetActive(false);
+        GamePlayState.gameObject.SetActive(true);
+    }
     public void Settings()
     {
         gameObject.SetActive(false);
         SettingState.gameObject.SetActive(true);
     }
 
-
+    public void History()
+    {
+        gameObject.SetActive(false);
+        gameHistoryState.gameObject.SetActive(true);
+    }
 
 }

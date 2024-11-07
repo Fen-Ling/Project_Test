@@ -50,6 +50,11 @@ public class Game_Play_State : MonoBehaviour
     {
         Game_Instance.score = Mathf.Max(Game_Instance.score, score);
 
+        var gameHistory = FindObjectOfType<GameHistory_State>();
+        if (gameHistory != null)
+        {
+            gameHistory.AddScore(score);
+        }
         gameObject.SetActive(false);
 
         GameOverState.gameObject.SetActive(true);

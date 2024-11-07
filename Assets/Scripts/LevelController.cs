@@ -11,6 +11,7 @@ namespace Golf
         public Sound_Stoun S_sound;
         public Sound_Game_Over G_O_sound;
         public Stone_Spawner stoneSpawner;
+        public GameHistory_State gameHistory;
         private float m_timer;
         public float m_delay = 2f;
         private float m_delay2;
@@ -75,6 +76,7 @@ namespace Golf
             G_O_sound.PlayGameOverSound();
             Debug.Log("GAME OVER!!!");
             onGameOver?.Invoke(m_score);
+            gameHistory.AddScore(m_score);
         }
     }
 }
