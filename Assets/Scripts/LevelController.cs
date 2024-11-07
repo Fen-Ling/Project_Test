@@ -12,8 +12,8 @@ namespace Golf
         public Sound_Game_Over G_O_sound;
         public Stone_Spawner stoneSpawner;
         private float m_timer;
-        [SerializeField]
-        private float m_delay = 2f;
+        public float m_delay = 2f;
+        private float m_delay2;
         private int m_score = 0;
         private List<Stone> m_stones = new List<Stone>();
         public event Action<int> onGameOver;
@@ -23,7 +23,7 @@ namespace Golf
         {
             m_timer = Time.time - m_delay;
             stick.onCollisionStone += OnCollisionStick;
-
+            m_delay2 = m_delay;
             m_score = 0;
 
             ClearStones();
@@ -35,6 +35,10 @@ namespace Golf
                 stick.onCollisionStone -= OnCollisionStick;
             }
         }
+        public void SetDelay(float newDelay)
+        {
+            m_delay = newDelay;
+        }
         private void ClearStones()
         {
             foreach (var stone in m_stones)
@@ -44,9 +48,9 @@ namespace Golf
 
             m_stones.Clear();
         }
-        private void Update()
+        private void FixedUpdate()
         {
-            if (Time.time > m_timer + m_delay)
+            if (Time.time > m_timer + m_delay2)
             {
                 m_timer = Time.time;
 
@@ -56,6 +60,7 @@ namespace Golf
                 stone.onCollisionStone += OnCollisionStone;
 
                 m_stones.Add(stone);
+                m_delay2 = m_delay2 = Mathf.Max(0.5f, m_delay2 - 0.1f);
             }
         }
         private void OnCollisionStick()
