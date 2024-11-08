@@ -1,17 +1,19 @@
 using UnityEngine;
-
-public class Sound_Game_Over : MonoBehaviour
+namespace Golf
 {
-    public AudioClip GameOverSound;
+    public class Sound_Game_Over : MonoBehaviour
+    {
+        public AudioClip GameOverSound;
         private AudioSource hitAudioSource;
-    void Start()
-    {
-        hitAudioSource = gameObject.AddComponent<AudioSource>();
-    }
+        void Start()
+        {
+            hitAudioSource = gameObject.AddComponent<AudioSource>();
+        }
 
-    public void PlayGameOverSound()
-    {
-        hitAudioSource.clip = GameOverSound;
-        hitAudioSource.Play();
+        public void PlayGameOverSound()
+        {
+            hitAudioSource.clip = GameOverSound;
+            hitAudioSource.Play();
+        }
     }
 }

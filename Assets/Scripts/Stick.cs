@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 
 namespace Golf
 {
@@ -10,7 +10,7 @@ namespace Golf
         public float speed = 360f;
         public float power = 20f;
         public Transform point;
-        public event System.Action onCollisionStone;
+        public event Action onCollisionStone;
         private Vector3 m_lastPointPosition;
         private Vector3 m_dir;
         private bool m_isDown = false;

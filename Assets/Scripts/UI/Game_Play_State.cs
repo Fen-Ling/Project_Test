@@ -1,63 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using Golf;
 using TMPro;
 using UnityEngine;
 
-public class Game_Play_State : MonoBehaviour
+namespace Golf
 {
-    public Game_Over_State GameOverState;
-    public PlayerController playerController;
-    public LevelController levelController;
-    public GameObject GamePlayUI;
-    public TextMeshProUGUI Score_Text;
-    private void OnEnable()
+    public class Game_Play_State : MonoBehaviour
     {
-        GamePlayUI.SetActive(true);
-        playerController.enabled = true;
-        levelController.enabled = true;
-        levelController.onGameOver += OnGameOver;
-        levelController.onScoreInc += OnScoreInc;
-
-        OnScoreInc(0);
-
-    }
-    private void OnDisable()
-    {
-        if (GamePlayUI)
+        public Game_Over_State GameOverState;
+        public PlayerController playerController;
+        public LevelController levelController;
+        public GameObject GamePlayUI;
+        public TextMeshProUGUI Score_Text;
+        private void OnEnable()
         {
-            GamePlayUI.SetActive(false);
-        }
+            GamePlayUI.SetActive(true);
+            playerController.enabled = true;
+            levelController.enabled = true;
+            levelController.onGameOver += OnGameOver;
+            levelController.onScoreInc += OnScoreInc;
 
-        if (playerController)
-        {
-            playerController.enabled = false;
-        }
+            OnScoreInc(0);
 
-        if (levelController)
+        }
+        private void OnDisable()
         {
-            levelController.enabled = false;
-            levelController.onGameOver -= OnGameOver;
-            levelController.onScoreInc -= OnScoreInc;
+            if (GamePlayUI)
+            {
+                GamePlayUI.SetActive(false);
+            }
+
+            if (playerController)
+            {
+                playerController.enabled = false;
+            }
+
+            if (levelController)
+            {
+                levelController.enabled = false;
+                levelController.onGameOver -= OnGameOver;
+                levelController.onScoreInc -= OnScoreInc;
+            }
+        }
+        private void OnScoreInc(int score)
+        {
+            Score_Text.text = $"Очки: {score}";
+        }
+        private void OnGameOver(int score)
+        {
+            Game_Instance.score = Mathf.Max(Game_Instance.score, score);
+
+            gameObject.SetActive(false);
+
+            GameOverState.gameObject.SetActive(true);
         }
     }
-    private void OnScoreInc(int score)
-    {
-        Score_Text.text = $"Очки: {score}";
-    }
-    private void OnGameOver(int score)
-    {
-        Game_Instance.score = Mathf.Max(Game_Instance.score, score);
-
-        var gameHistory = FindObjectOfType<GameHistory_State>();
-        if (gameHistory != null)
-        {
-            gameHistory.AddScore(score);
-        }
-        gameObject.SetActive(false);
-
-        GameOverState.gameObject.SetActive(true);
-    }
-
 }

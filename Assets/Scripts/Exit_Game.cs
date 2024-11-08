@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Exit_Game : MonoBehaviour
-
+namespace Golf
 {
-    // Этот метод будет вызываться при нажатии на кнопку
-    public void Quit()
+    public class Exit_Game : MonoBehaviour
+
     {
-        #if UNITY_EDITOR
-        // Если мы в редакторе Unity, прекращаем воспроизведение
-        UnityEditor.EditorApplication.isPlaying = false;
-        #else
+        // Этот метод будет вызываться при нажатии на кнопку
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            // Если мы в редакторе Unity, прекращаем воспроизведение
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             // В противном случае, выходим из приложения
             Application.Quit();
-        #endif
+#endif
+        }
     }
 }
-

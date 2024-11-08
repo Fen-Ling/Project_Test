@@ -3,46 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Settings_State : MonoBehaviour
+namespace Golf
 {
-    public GameObject SetteingsUI;
-    public Main_Menu_State mainMenuState;
-    public Golf.LevelController levelController;
-    public InputField inputField;
-    private void OnEnable()
+    public class Settings_State : MonoBehaviour
     {
-        SetteingsUI.SetActive(true);
-    }
-    private void OnDisable()
-    {
-        if (SetteingsUI)
+        public GameObject SetteingsUI;
+        public Main_Menu_State mainMenuState;
+        public Golf.LevelController levelController;
+        public InputField inputField;
+        private void OnEnable()
         {
-            SetteingsUI.SetActive(false);
+            SetteingsUI.SetActive(true);
         }
-    }
-    public void BackToMainMenu()
-    {
-        gameObject.SetActive(false);
-        mainMenuState.gameObject.SetActive(true);
-    }
-
-    public void ChangeDelay()
-    {
-        if (levelController != null && inputField != null)
+        private void OnDisable()
         {
-            float newDelay;
-
-            // Попробуем преобразовать введенное значение в float
-            if (float.TryParse(inputField.text, out newDelay))
+            if (SetteingsUI)
             {
-                levelController.SetDelay(newDelay); // Устанавливаем новое значение задержки
-            }
-            else
-            {
-                Debug.LogWarning("Введено некорректное значение! Пожалуйста, введите число.");
+                SetteingsUI.SetActive(false);
             }
         }
-        
+        public void BackToMainMenu()
+        {
+            gameObject.SetActive(false);
+            mainMenuState.gameObject.SetActive(true);
+        }
+
+        public void ChangeDelay()
+        {
+            if (levelController != null && inputField != null)
+            {
+                float newDelay;
+
+                // Попробуем преобразовать введенное значение в float
+                if (float.TryParse(inputField.text, out newDelay))
+                {
+                    levelController.SetDelay(newDelay); // Устанавливаем новое значение задержки
+                }
+                else
+                {
+                    Debug.LogWarning("Введено некорректное значение! Пожалуйста, введите число.");
+                }
+            }
+
+        }
+
     }
-    
 }

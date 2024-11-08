@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Golf;
 using UnityEngine;
+
 namespace Golf
 {
     public class LevelController : MonoBehaviour
@@ -78,6 +78,7 @@ namespace Golf
             onGameOver?.Invoke(m_score);
             gameHistory.AddScore(m_score);
             ClearStones();
+            
         }
     }
 }
