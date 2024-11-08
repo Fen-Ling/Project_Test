@@ -56,7 +56,7 @@ namespace Golf
         }
         public void ClearHistory()
     {
-        history = "История очков:\n"; // Сбрасываем историю
+        history = ""; // Сбрасываем историю
         PlayerPrefs.DeleteKey("GameHistory"); // Удаляем сохраненную историю
         UpdateHistoryUI(); // Обновляем UI
     }

@@ -78,7 +78,7 @@ namespace Golf
             onGameOver?.Invoke(m_score);
             gameHistory.AddScore(m_score);
             ClearStones();
-            
+            // gameHistory.ClearHistory();
         }
     }
 }

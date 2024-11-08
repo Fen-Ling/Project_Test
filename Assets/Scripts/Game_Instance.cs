@@ -18,7 +18,8 @@ namespace Golf
         public void OnDisable()
         {
             PlayerPrefs.SetInt("Макс. Очки", score);
-            
+            PlayerPrefs.Save();
+
         }
         private void Start()
         {
@@ -28,5 +29,6 @@ namespace Golf
             }
             states.GetChild(0).gameObject.SetActive(true);
         }
+        
     }
 }

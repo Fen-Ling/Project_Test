@@ -9,7 +9,7 @@ namespace Golf
     {
         public GameObject SetteingsUI;
         public Main_Menu_State mainMenuState;
-        public Golf.LevelController levelController;
+        public LevelController levelController;
         public InputField inputField;
         private void OnEnable()
         {
