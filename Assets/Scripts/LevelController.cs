@@ -61,7 +61,7 @@ namespace Golf
                 stone.onCollisionStone += OnCollisionStone;
 
                 m_stones.Add(stone);
-                m_delay2 = m_delay2 = Mathf.Max(0.5f, m_delay2 - 0.1f);
+                m_delay2 = Mathf.Max(0.5f, m_delay2 - 0.1f);
             }
         }
         private void OnCollisionStick()
@@ -77,6 +77,7 @@ namespace Golf
             Debug.Log("GAME OVER!!!");
             onGameOver?.Invoke(m_score);
             gameHistory.AddScore(m_score);
+            ClearStones();
         }
     }
 }

@@ -6,18 +6,6 @@ namespace Golf
     {
         public Stick stick;
 
-        // private void FixedUpdate()
-        // {
-        //     if (Input.GetMouseButton(0))
-        //     {
-        //         stick.Down();
-        //     }
-        //     else
-        //     {
-        //         stick.Up();
-        //     }
-        // }
-
         public void PointerDown()
         {
             stick.Down();
