@@ -7,7 +7,6 @@ namespace Golf
     public class Exit_Game : MonoBehaviour
 
     {
-        public GameHistory_State Histoty;
         // Этот метод будет вызываться при нажатии на кнопку
         public void Quit()
         {
@@ -16,7 +15,6 @@ namespace Golf
             UnityEditor.EditorApplication.isPlaying = false;
 #else
             // В противном случае, выходим из приложения
-            History.SaveHistory();
             Application.Quit();
 #endif
         }

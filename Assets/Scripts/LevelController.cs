@@ -77,6 +77,7 @@ namespace Golf
             Debug.Log("GAME OVER!!!");
             onGameOver?.Invoke(m_score);
             gameHistory.AddScore(m_score);
+            PlayerPrefs.Save();
             ClearStones();
             // gameHistory.ClearHistory();
         }

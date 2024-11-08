@@ -17183,7 +17183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e2f056f4c41b446a837e57bd8b1dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Histoty: {fileID: 0}
+  Histoty: {fileID: 213288735}
 --- !u!1001 &1847084014
 PrefabInstance:
   m_ObjectHideFlags: 0
