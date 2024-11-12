@@ -34,10 +34,9 @@ namespace Golf
             {
                 float newDelay;
 
-                // Попробуем преобразовать введенное значение в float
                 if (float.TryParse(inputField.text, out newDelay))
                 {
-                    levelController.SetDelay(newDelay); // Устанавливаем новое значение задержки
+                    levelController.SetDelay(newDelay);
                 }
                 else
                 {

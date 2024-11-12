@@ -7,12 +7,12 @@ namespace Golf
 {
     public class Button_speed_stone : MonoBehaviour
     {
-        public InputField inputField; // Ссылка на InputField
+        public InputField inputField;
 
-        // Этот метод можно вызывать, когда пользователь готов сохранить введенные данные
+
         public void OnSubmit()
         {
-            string inputValue = inputField.text; // Получаем текст из поля ввода
+            string inputValue = inputField.text;
 
         }
     }

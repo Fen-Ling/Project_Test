@@ -3,25 +3,25 @@ namespace Golf
 {
     public class Sound_Stick : MonoBehaviour
     {
-        public AudioClip stickHitSound; // Звук удара клюшки
+        public AudioClip stickHitSound;
         private AudioSource hitAudioSource;
         [Range(0f, 1f)]
-        public float volume = 1f; // Громкость удара клюшки
+        public float volume = 1f;
         void Start()
         {
             hitAudioSource = gameObject.AddComponent<AudioSource>();
-            hitAudioSource.clip = stickHitSound; // Устанавливаем звук удара клюшки
-            hitAudioSource.volume = volume; // Устанавливаем громкость
+            hitAudioSource.clip = stickHitSound;
+            hitAudioSource.volume = volume;
         }
         public void PlayHitSound()
         {
-            hitAudioSource.clip = stickHitSound; // Удар клюшки
+            hitAudioSource.clip = stickHitSound;
             hitAudioSource.Play();
         }
         public void SetVolume(float newVolume)
         {
-            volume = newVolume; // Обновляем переменную громкости
-            hitAudioSource.volume = volume; // Обновляем громкость AudioSource
+            volume = newVolume;
+            hitAudioSource.volume = volume;
         }
     }
 }

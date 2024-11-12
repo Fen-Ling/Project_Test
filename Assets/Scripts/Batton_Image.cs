@@ -7,24 +7,24 @@ namespace Golf
     public class Batton_Image : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
 
-        public Sprite normalSprite; // обычное изображение
-        public Sprite pressedSprite; // изображение при нажатии
-        private Image buttonImage; // компонент Image кнопки
+        public Sprite normalSprite;
+        public Sprite pressedSprite;
+        private Image buttonImage;
 
         void Start()
         {
             buttonImage = GetComponent<Image>();
-            buttonImage.sprite = normalSprite; // Убедитесь, что кнопка начинает с нормального изображения
+            buttonImage.sprite = normalSprite;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            buttonImage.sprite = pressedSprite; // Изменяем изображение на "нажато"
+            buttonImage.sprite = pressedSprite; 
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            buttonImage.sprite = normalSprite; // Возвращаем изображение обратно
+            buttonImage.sprite = normalSprite; 
         }
     }
 }
